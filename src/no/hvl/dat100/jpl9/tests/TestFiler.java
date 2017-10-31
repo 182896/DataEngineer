@@ -32,7 +32,7 @@ public class TestFiler {
 		Student student = new Student("Olsen", "Ole", 7L, 100, "1A");
 		Laerer laerer = new Laerer("Olsen", "Ole", 8L, 1000, 7676);
 
-		assertEquals(samling.getAntall(), 2);
+		assertEquals(2, samling.getAntall());
 		assertTrue(samling.finnes(student));
 		assertTrue(samling.finnes(laerer));
 	}

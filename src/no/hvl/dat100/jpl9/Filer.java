@@ -48,18 +48,24 @@ public class Filer {
 		}
 		
 		int teller = 0;
+		String linje;
 		while(leser.hasNextLine()) {
 			if(teller == 0) {
 				samling = new PersonSamling(Integer.parseInt(leser.next()));
 				teller++;
 			}
-			if(leser.next().equals("Laerer")) {
-				Laerer laerer = new Laerer(leser.nextLine(), leser.nextLine(), Long.parseLong(leser.nextLine()), Integer.parseInt(leser.nextLine()), Integer.parseInt(leser.nextLine()));
+			
+			linje = leser.nextLine();
+			if(linje.equals(LAERER)) {
+				linje = leser.nextLine();
+				Laerer laerer = new Laerer(leser.nextLine(), leser.nextLine(), Long.parseLong(linje), Integer.parseInt(leser.nextLine()), Integer.parseInt(leser.nextLine()));
 				samling.leggTil(laerer);
-			}else if(leser.next().equals("Student")) {
-				Student student = new Student(leser.nextLine(), leser.nextLine(), Long.parseLong(leser.nextLine()), Integer.parseInt(leser.nextLine()), leser.nextLine());
+			}else if(linje.equals(STUDENT)) {
+				linje = leser.nextLine();
+				Student student = new Student(leser.nextLine(), leser.nextLine(), Long.parseLong(linje), Integer.parseInt(leser.nextLine()), leser.nextLine());
 				samling.leggTil(student);
 			}
+
 		}
 		
 		leser.close();
