@@ -10,7 +10,7 @@ public class PersonSamling {
 	public PersonSamling() {
 		personer = new Person[20];
 		nesteLedige = 0;
-		antall = personer.length;
+		antall = 20;
 	}
 
 	public PersonSamling(int lengde) {
@@ -20,7 +20,7 @@ public class PersonSamling {
 	}
 
 	public int getAntall() {
-		return antall;
+		return nesteLedige;
 	}
 
 	public Person[] getSamling() {
@@ -28,13 +28,23 @@ public class PersonSamling {
 	}
 
 	public int finnPerson(Person p) {
-		for(int i = 0; i<personer.length; i++) {
-			if(personer[i].erLik(p)) {
-				return i;
-			}else {
-				return -1;
+		int index = 0;
+		boolean funnet = false;
+		for(int i = 0; i<=personer.length; i++) {
+			if(personer[i] == null) {
+				break;
 			}
-		}return -1;
+			if(personer[i].erLik(p)) {
+				funnet = true;
+				break;
+			}else {
+				index++;
+			}
+		}
+		if(funnet == false) {
+			index = -1;
+		}
+		return index;
 	}
 
 	public boolean finnes(Person p) {
@@ -46,7 +56,7 @@ public class PersonSamling {
 	}
 
 	public String toString() {
-		String utskrift = String.valueOf(antall);
+		String utskrift = String.valueOf(antall)+"\n";
 		for(int i = 0; i<personer.length; i++) {
 				utskrift += personer[i].toString();
 		}
@@ -63,7 +73,7 @@ public class PersonSamling {
 	}
 
 	public boolean ledigPlass() {
-		if(antall<personer.length) {
+		if(nesteLedige<personer.length) {
 			return true;
 		}else {
 			return false;
@@ -91,11 +101,8 @@ public class PersonSamling {
 	}
 
 	public void slett(Person p) {
-		for(int i = finnPerson(p); i<personer.length; i++) {
-			if((personer[i] == null) || (personer[i+1] == null)) {
-				break;
-			}
-			personer[i] = personer[i+1];
-		}
+		nesteLedige--;
+		personer[finnPerson(p)] = personer[nesteLedige];
+		personer[nesteLedige] = null;
 	}
 }

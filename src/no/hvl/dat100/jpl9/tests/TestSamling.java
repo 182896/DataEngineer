@@ -83,7 +83,7 @@ public class TestSamling {
 
 		assertTrue(samling.finnes(student));
 		assertTrue(samling.finnes(laerer));
-		assertEquals(samling.getAntall(), 2);
+		assertEquals(samling.getAntall(), 3);
 		assertTrue(samling.ledigPlass());
 	}
 
