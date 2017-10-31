@@ -19,16 +19,50 @@ public class Filer {
 		boolean skrevet = true;
 		PrintWriter writer = null;
 
-		// TODO
-		throw new RuntimeException("not implemented");
+		File fil = new File(MAPPE+filnavn);
+		
+		try{
+			writer = new PrintWriter(fil);
+		}
+		catch(FileNotFoundException e) {
+			System.out.println("Fant ikke filen");
+		}
+		
+		writer.print(samling.toString());
+		
+		writer.close();
+		return skrevet;
 
 	}
 
 	public PersonSamling les(String filnavn) {
 
 		PersonSamling samling = null;
-
-		// TODO
-		throw new RuntimeException("not implemented");
+		File fil = new File(MAPPE+filnavn);
+		Scanner leser = null;
+		
+		try {
+			leser = new Scanner(fil);
+		} catch(FileNotFoundException e) {
+			System.out.println("Fant ikke filen.");
+		}
+		
+		int teller = 0;
+		while(leser.hasNextLine()) {
+			if(teller == 0) {
+				samling = new PersonSamling(Integer.parseInt(leser.next()));
+				teller++;
+			}
+			if(leser.next().equals("Laerer")) {
+				Laerer laerer = new Laerer(leser.nextLine(), leser.nextLine(), Long.parseLong(leser.nextLine()), Integer.parseInt(leser.nextLine()), Integer.parseInt(leser.nextLine()));
+				samling.leggTil(laerer);
+			}else if(leser.next().equals("Student")) {
+				Student student = new Student(leser.nextLine(), leser.nextLine(), Long.parseLong(leser.nextLine()), Integer.parseInt(leser.nextLine()), leser.nextLine());
+				samling.leggTil(student);
+			}
+		}
+		
+		leser.close();
+		return samling;
 	}
 }

@@ -58,7 +58,10 @@ public class PersonSamling {
 	public String toString() {
 		String utskrift = String.valueOf(antall)+"\n";
 		for(int i = 0; i<personer.length; i++) {
-				utskrift += personer[i].toString();
+			if(personer[i] == null) {
+				break;
+			}
+			utskrift += personer[i].toString();
 		}
 		return utskrift;
 	}
