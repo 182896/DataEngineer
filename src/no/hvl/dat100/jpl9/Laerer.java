@@ -2,39 +2,41 @@ package no.hvl.dat100.jpl9;
 
 public class Laerer extends Person {
 
+	private int kontonr;
+	private int salary;
+	
 	public Laerer() {
-		super();
+		setEtternavn("Nordmann");
+		setFornavn("Ola");
+		setFnummer(10100012345L);
+		kontonr = 7676;
+		salary = 1000;
 	}
-
-	public Laerer(String etternamn, String fornamn, long fodselsnummer, int maanedslonn, int kontonummer) {
-		// TODO
-		throw new RuntimeException("not implemented");
+	
+	public Laerer(String etternavn, String fornavn, Long fnummer, int salary, int kontonr) {
+		super(etternavn, fornavn, fnummer);
+		this.kontonr = kontonr;
+		this.salary = salary;
 	}
-
-	public int getMaanedslonn() {
-		// TODO
-		throw new RuntimeException("not implemented");
-	}
-
-	public void setMaanedslonn(int maanedslonn) {
-		// TODO
-		throw new RuntimeException("not implemented");
-	}
-
-	public int getKontonummer() {
-		// TODO
-		throw new RuntimeException("not implemented");
-	}
-
-	public void setKontonummer(int kontonummer) {
-		// TODO
-		throw new RuntimeException("not implemented");
-	}
-
+	
 	@Override
 	public String toString() {
-		// TODO
-		throw new RuntimeException("not implemented");
+		return "LAERER\n" + super.toString()+ "\n" + salary + "\n" + kontonr + "\n";
+	}
 
+	public int getKontonr() {
+		return kontonr;
+	}
+
+	public void setKontonr(int kontonr) {
+		this.kontonr = kontonr;
+	}
+
+	public int getSalary() {
+		return salary;
+	}
+
+	public void setSalary(int salary) {
+		this.salary = salary;
 	}
 }

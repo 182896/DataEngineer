@@ -1,41 +1,42 @@
 package no.hvl.dat100.jpl9;
 
 public class Student extends Person {
-
+	private int studnr;
+	private String klasse;
+	
 	public Student() {
-		super();
+		setEtternavn("Nordmann");
+		setFornavn("Ola");
+		setFnummer(10100012345L);
+		studnr = 100;
+		klasse = "1A";
+	}
+	
+	public Student(String etternavn, String fornavn, Long fnummer, int studnr, String klasse) {
+		super(etternavn, fornavn, fnummer);
+		this.studnr = studnr;
+		this.klasse = klasse;
+	}
+	
+	@Override
+	public String toString() {
+		return "STUDENT\n" + super.toString() + "\n" + studnr + "\n" + klasse + "\n";
 	}
 
-	public Student(String etternamn, String fornamn, long fodselsnummer, int studentnummer, String klasse) {
-		// TODO
-		throw new RuntimeException("not implemented");
+	public int getStudnr() {
+		return studnr;
 	}
 
-	public int getStudentnummer() {
-		// TODO
-		throw new RuntimeException("not implemented");
-	}
-
-	public void setStudentnummer(int studentnummer) {
-		// TODO
-		throw new RuntimeException("not implemented");
+	public void setStudnr(int studnr) {
+		this.studnr = studnr;
 	}
 
 	public String getKlasse() {
-		// TODO
-		throw new RuntimeException("not implemented");
+		return klasse;
 	}
 
 	public void setKlasse(String klasse) {
-		// TODO
-		throw new RuntimeException("not implemented");
-	}
-
-	@Override
-	public String toString() {
-		// TODO
-		throw new RuntimeException("not implemented");
-
+		this.klasse = klasse;
 	}
 
 }

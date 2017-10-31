@@ -1,62 +1,80 @@
 package no.hvl.dat100.jpl9;
 
 public abstract class Person {
-
+	private String etternavn;
+	private String fornavn;
+	private Long fnummer;
+	
 	public Person() {
+		etternavn = "Nordmann";
+		fornavn = "Ola";
+		fnummer = 10100012345L;
 	}
-
-	public Person(String etternamn, String fornamn, long fodselsnummer) {
-		// TODO
+		
+	public Person(String etternavn, String fornavn, long fnummer) {
+		this.etternavn = etternavn;
+		this.fornavn = fornavn;
+		this.fnummer = fnummer;
 	}
-
-	public String getEtternamn() {
-		// TODO
-		throw new RuntimeException("not implemented");
+		
+	@Override
+	public String toString() {
+		return fnummer + "\n" + etternavn + "\n" + fornavn;
 	}
-
-	public void setEtternamn(String etternamn) {
-		// TODO
-		throw new RuntimeException("not implemented");
+		
+	public void setEtternavn(String etternavn) {
+		this.etternavn = etternavn;
 	}
-
-	public String getFornamn() {
-		// TODO
-		throw new RuntimeException("not implemented");
+	
+	public String getEtternavn() {
+		return etternavn;
 	}
-
-	public void setFornamn(String fornamn) {
-		// TODO
-		throw new RuntimeException("not implemented");
+		
+	public void setFornavn(String fornavn) {
+		this.fornavn = fornavn;
 	}
-
-	public void setFodselsnummer(long fodselsnummer) {
-		// TODO
-		throw new RuntimeException("not implemented");
+		
+	public String getFornavn() {
+		return fornavn;
 	}
-
-	public long getFodselsnummer() {
-		// TODO
-		throw new RuntimeException("not implemented");
+		
+	public void setFnummer(Long fnummer) {
+		this.fnummer = fnummer;
 	}
+		
+	public Long getFnummer() {
+		return fnummer;
+	}	
 
 	public boolean erLik(Person person) {
-		// TODO
-		throw new RuntimeException("not implemented");
+		if(fnummer.equals(person.getFnummer())) {
+			return true;
+		}else{
+			return false;
+		}
+			
 	}
 
 	public boolean erKvinne() {
-		// TODO
-		throw new RuntimeException("not implemented");
+		String kvinne = String.valueOf(fnummer);
+		String[] kvinner = kvinne.split("(?<=.)");
+		int gender = Integer.parseInt(kvinner[8]);
+		if(gender%2!=0) {
+			return false;
+		}else {
+			return true;
+		}
 	}
 
 	public boolean erMann() {
-		// TODO
-		throw new RuntimeException("not implemented");
+		String mann = String.valueOf(fnummer);
+		String[] menn = mann.split("(?<=.)");
+		int gender = Integer.parseInt(menn[8]);
+		if(gender%2!=0) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 
-	@Override
-	public String toString() {
-		// TODO
-		throw new RuntimeException("not implemented");
-	}
 }
